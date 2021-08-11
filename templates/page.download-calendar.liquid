@@ -1,0 +1,96 @@
+{% capture captured_page %}
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}
+<!-- /templates/page.download-calendar.liquid -->
+
+
+<section class="page-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 mx-auto text-center">
+        <h1>{{ page.title }}</h1>
+      </div><!-- end .col-lg-6 -->
+    </div><!-- end .row -->
+  </div><!-- end .container -->
+</section>
+
+<section class="downloads">
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <img src="{{ 'digital-calendar-preview.png' | file_url }}" alt="Digital Calendar 2020" class="img-fluid" />
+      </div><!-- end .col-lg-12 -->
+    </div><!-- end .row -->
+  </div><!-- end .container -->
+  
+  <div class="container-fluid">  
+    <div class="row download-buttons">
+      
+      <div class="col-lg-4 mx-auto mb-4">
+        <a href="https://cdn.shopify.com/s/files/1/0076/5899/5785/files/KJP_art_calendar_09.pdf?v=1610655485" name="KJP_art_calendar.pdf" class="btn btn-primary download">
+          Download
+        </a>
+      </div><!-- end .col-lg-4 -->
+
+    </div><!-- end .row -->
+    
+  </div><!-- end .container-fluid -->
+</section>
+
+<script>
+  
+  	function downloadFile(data, fileName, type="image/jpeg") {
+      
+      // Create an invisible A element
+      const a = document.createElement("a");
+      a.style.display = "none";
+      document.body.appendChild(a);
+      
+      // Set the HREF to a Blob representation of the data to be downloaded
+      a.href = window.URL.createObjectURL(
+        new Blob([data], { type: type })
+      );
+      
+      // Use download attribute to set set desired file name
+      a.setAttribute("download", fileName);
+      
+      // Trigger the download by simulating click
+      a.click();
+      
+      // Cleanup
+      window.URL.revokeObjectURL(a.href);
+      document.body.removeChild(a);
+    }
+  
+    jQuery(".download").click(function(e) {
+      
+      let isMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
+      
+      // If on mobile redirect to image instead
+      if (!isMobile) {
+      	// If on desktop  
+       	e.preventDefault();
+      
+        //open download link in new page
+        var url = $(this).attr("href");
+        var filename = $(this).attr("name");
+      
+        fetch(url).then((response) => {
+        	return response.blob();
+        }).then(blob => {
+            downloadFile(blob, filename);
+          	
+          	//redirect current page to success page
+          	setTimeout(function() {
+    			window.location="/pages/thank-you-calendar";
+        		window.focus();
+  			}, 3000);
+
+        });
+      }
+        
+    }
+);
+</script>
+{% endcapture %}
+{% include 'password-protect' %}

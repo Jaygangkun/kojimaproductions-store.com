@@ -1,0 +1,124 @@
+{% capture captured_page %}
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}
+<!-- /templates/page.downloads.liquid -->
+
+
+<section class="page-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 mx-auto text-center">
+        <h1>{{ page.title }}</h1>
+      </div><!-- end .col-lg-6 -->
+    </div><!-- end .row -->
+  </div><!-- end .container -->
+</section>
+
+<section class="downloads">
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <img src="{{ 'KJP5-WALLPAPER-LUDEN-FULL_HD.jpg' | file_url }}" alt="KJP5 Ludens 4k" class="img-fluid" />
+      </div><!-- end .col-lg-12 -->
+    </div><!-- end .row -->
+  </div><!-- end .container -->
+  
+  <div class="container-fluid">  
+    <div class="row download-buttons">
+      <div class="col-lg col-md-12 mb-4">
+        <a href="https://greenlight.s3.us-east-2.amazonaws.com/KJ/KJP/5thwallpaper/KJP5-WALLPAPER-LUDEN-4K.jpg" name="KJP5-WALLPAPER-LUDEN-4K.jpg" class="btn btn-primary download">
+          4K (3840 x 2160)<br />
+          Download
+       	</a>
+      </div><!-- end .col-lg-4 -->
+      
+      <div class="col-lg col-md-12 mb-4">
+        <a href="https://greenlight.s3.us-east-2.amazonaws.com/KJ/KJP/5thwallpaper/KJP5-WALLPAPER-LUDEN-2K.jpg" name="KJP5-WALLPAPER-LUDEN-2K.jpg" class="btn btn-primary download">
+          2K (2560 x 1440)<br />
+          Download
+        </a>
+      </div><!-- end .col-lg-4 -->
+      
+      <div class="col-lg col-md-12 mb-4">
+        <a href="https://greenlight.s3.us-east-2.amazonaws.com/KJ/KJP/5thwallpaper/KJP5-WALLPAPER-LUDEN-FULL_HD.jpg" name="KJP5-WALLPAPER-LUDEN-FULL_HD.jpg" class="btn btn-primary download">
+          Full HD (1920 x 1080)<br />
+          Download
+        </a>
+      </div><!-- end .col-lg-4 -->
+      
+      <div class="col-lg col-md-12 mb-4">
+        <a href="https://greenlight.s3.us-east-2.amazonaws.com/KJ/KJP/5thwallpaper/KJP5-WALLPAPER-LUDEN-ULTRAWIDE.jpg" name="KJP5-WALLPAPER-LUDEN-ULTRAWIDE.jpg" class="btn btn-primary download">
+          Ultra Wide (3440 x 1440)<br />
+          Download
+        </a>
+      </div><!-- end .col-lg-4 -->
+      
+      <div class="col-lg col-md-12 mb-4">
+        <a href="https://greenlight.s3.us-east-2.amazonaws.com/KJ/KJP/5thwallpaper/KJP5-WALLPAPER-LUDEN-MOBILE.jpg" name="KJP5-WALLPAPER-LUDEN-MOBILE.jpg" class="btn btn-primary download">
+          Mobile (1124 x 2436)<br />
+          Download
+        </a>
+      </div><!-- end .col-lg-4 -->
+
+    </div><!-- end .row -->
+    
+  </div><!-- end .container-fluid -->
+</section>
+
+<script>
+  
+  	function downloadFile(data, fileName, type="image/jpeg") {
+      
+      // Create an invisible A element
+      const a = document.createElement("a");
+      a.style.display = "none";
+      document.body.appendChild(a);
+      
+      // Set the HREF to a Blob representation of the data to be downloaded
+      a.href = window.URL.createObjectURL(
+        new Blob([data], { type: type })
+      );
+      
+      // Use download attribute to set set desired file name
+      a.setAttribute("download", fileName);
+      
+      // Trigger the download by simulating click
+      a.click();
+      
+      // Cleanup
+      window.URL.revokeObjectURL(a.href);
+      document.body.removeChild(a);
+    }
+  
+    jQuery(".download").click(function(e) {
+      
+      let isMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
+      
+      // If on mobile redirect to image instead
+      if (!isMobile) {
+      	// If on desktop  
+       	e.preventDefault();
+      
+        //open download link in new page
+        var url = $(this).attr("href");
+        var filename = $(this).attr("name");
+      
+        fetch(url).then((response) => {
+        	return response.blob();
+        }).then(blob => {
+            downloadFile(blob, filename);
+          	
+          	//redirect current page to success page
+          	setTimeout(function() {
+    			window.location="/pages/thank-you";
+        		window.focus();
+  			}, 3000);
+
+        });
+      }
+        
+    }
+);
+</script>
+{% endcapture %}
+{% include 'password-protect' %}

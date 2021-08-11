@@ -1,0 +1,55 @@
+<section class="hero-slider">
+  
+  {% for block in section.blocks %}
+  	
+  	<div class="slide" {{ block.shopify_attributes }}>
+      <a href="{{ block.settings.slide_link }}">
+      	<img src="{{ block.settings.slide_image | img_url: "1400x" }}" alt="" class="desktop-image" />
+      	<img src="{{ block.settings.mobile_slide_image | img_url: "700x" }}" alt="" class="mobile-image" />
+      </a>
+    </div><!-- end .slide -->
+  
+  {% endfor %}
+  
+</section>
+
+{% schema %}
+  {
+    "name": "Hero Slider",
+	"blocks": [
+      {
+        "type": "hero-slider",
+        "name": "Slides",
+        "settings": [
+          {
+            "id": "slide_image",
+            "type": "image_picker",
+            "label": "Desktop Slide Background"
+          },
+          {
+            "id": "mobile_slide_image",
+            "type": "image_picker",
+            "label": "Mobile Slide Background"
+          },
+		  {
+			"id": "slide_link",
+			"type": "url",
+			"label": "Slide Link"
+		  }
+        ]
+      }
+    ],
+	"presets": [
+      {
+        "category": "Slider",
+        "name": "Hero Slider"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
