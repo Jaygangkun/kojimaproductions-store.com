@@ -1,0 +1,3 @@
+theme get --list --password=shptka_b5d00b641d1d846517ae15ece9c1a228 --store="kojima.myshopify.com"
+
+theme get --password=shptka_b5d00b641d1d846517ae15ece9c1a228 --store="kojima.myshopify.com" --themeid=120350048329
