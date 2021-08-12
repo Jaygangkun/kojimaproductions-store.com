@@ -4256,3 +4256,75 @@ section.contact-form {
 @media only screen and (max-width : 320px) {
 
 }
+
+#site-header {
+  background: rgba(0, 0, 0, 0.35);
+  position: fixed;
+  left: 0px;
+  top: 41.5px;
+  width: 100%;
+  z-index: 1;
+  border-bottom: 0px;
+
+  ul.mega-menu li {
+    a.mega-menu-link {
+      color: #ffffff;  
+      position: relative;
+      padding: 35px;
+      &.has-icon::after {
+        content: '';
+        position: absolute;
+        right: 18px;
+        top: 50%;
+        transform: translateY(-50%);
+        background-image: url(icon-arrow-down.png);
+        width: 10px;
+        height: 6px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+      }
+    }
+  }
+
+  .search-icon {
+    color: #ffffff;
+  }
+
+  .language-switcher {
+    flex-shrink: 0;
+
+    .language-selected {
+      .dropdown {
+        width: 10px;
+      }
+    }
+    .countries {
+      background: #000000;
+      border: 0px;
+
+      li a {
+        border-bottom: 0px;
+      }
+    }
+  }
+
+  a.js-drawer-open-right {
+    flex-shrink: 0;
+
+  }
+}
+
+.mobile-header {
+  background: rgba(0, 0, 0, 0.35);
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  z-index: 1;
+
+  .site-nav__link {
+    display: inline-block;
+    display: none;
+  }
+}

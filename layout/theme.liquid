@@ -138,7 +138,7 @@ window.supported_currencies = "{{ settings.mlvedaACS_supportedCurrencies }}";
       	<div  class="row">
         	<div class="col-lg-2 d-flex align-items-center">
               <a href="/" itemprop="url">
-                <img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}" itemprop="logo">
+                <img src="{{ 'logo-new.png' | asset_url }}" alt="{{ shop.name }}" itemprop="logo">
               </a>
           	</div><!-- end .col-lg-2 -->
           	<div class="col-lg-8">
@@ -148,13 +148,17 @@ window.supported_currencies = "{{ settings.mlvedaACS_supportedCurrencies }}";
                 	{% assign link_class = link.title | downcase | replace: ' ', '-' %}
                 
               		<li>
-                      <a href="{{ link.url }}" class="category-{{ link_class }}">{{ link.title }}</a>
                       {% if link_class == 'all' %}
+                        <a href="{{ link.url }}" class="mega-menu-link category-{{ link_class }} has-icon">{{ link.title }}</a>
                       	{% include 'mega-menu-all' %}
                       {% elsif link_class == 'kojima-productions' %}
+                        <a href="{{ link.url }}" class="mega-menu-link category-{{ link_class }} has-icon">{{ link.title }}</a>
                       	{% include 'mega-menu-kojima' %}
                       {% elsif link_class == 'death-stranding' %}
+                        <a href="{{ link.url }}" class="mega-menu-link category-{{ link_class }} has-icon">{{ link.title }}</a>
                       	{% include 'mega-menu-death-stranding' %}
+                      {% else %}
+                        <a href="{{ link.url }}" class="mega-menu-link category-{{ link_class }}">{{ link.title }}</a>
                       {% endif %}
                		</li>
             	{% endfor %}
@@ -168,20 +172,20 @@ window.supported_currencies = "{{ settings.mlvedaACS_supportedCurrencies }}";
                 <a href="#" class="search-icon"><i class="fa fa-search" aria-hidden="true"></i></a>
                   
                 <div class="language-switcher">
-                  <div class="language-selected"><img src="//cdn.shopify.com/s/files/1/0076/5899/5785/t/2/assets/ly-icon-63593.png?4005819164455088808" alt="USA" /> <i class="fa fa-angle-down" aria-hidden="true"></i></div>
+                  <div class="language-selected"><img src="{{ 'ly-icon-63593.png' | asset_url }}" alt="USA" /> <img class="dropdown" src="{{ 'icon-arrow-down.png' | asset_url }}"></div>
 
                   <ul class="countries">
-                    <li><a href="https://kojimaproductions-store.com/"><img src="//cdn.shopify.com/s/files/1/0076/5899/5785/t/2/assets/ly-icon-63593.png?4005819164455088808" alt="USA" /></a></li>
-                    <li><a href="https://uk.kojimaproductions-store.com/"><img src="//cdn.shopify.com/s/files/1/0076/5899/5785/t/2/assets/ly-icon-64044.png?4005819164455088808" alt="UK" /></a></li>
-                    <li><a href="https://uk.kojimaproductions-store.com/fr"><img src="//cdn.shopify.com/s/files/1/0076/5899/5785/t/2/assets/ly-icon-64045.png?4005819164455088808" alt="France" /></a></li>
-                    <li><a href="https://uk.kojimaproductions-store.com/ru"><img src="//cdn.shopify.com/s/files/1/0076/5899/5785/files/russia-flag.png?2197205886242055753" alt="Russia" /></a></li>
-                    <li><a href="https://kojimaproductions-store.jp/"><img src="//cdn.shopify.com/s/files/1/0076/5899/5785/t/2/assets/ly-icon-64048.png?4005819164455088808" alt="Japan" /></a></li>
-                    <li><a href="http://kojimaproductions-store.cn/"><img src="//cdn.shopify.com/s/files/1/0076/5899/5785/t/2/assets/ly-icon-64049.png?16845064557726107644" alt="China" /></a></li>
+                    <li><a href="https://kojimaproductions-store.com/"><img src="{{ 'ly-icon-63593.png' | asset_url }}" alt="USA" /></a></li>
+                    <li><a href="https://uk.kojimaproductions-store.com/"><img src="{{ 'ly-icon-64044.png' | asset_url }}" alt="UK" /></a></li>
+                    <li><a href="https://uk.kojimaproductions-store.com/fr"><img src="{{ 'ly-icon-64045.png' | asset_url }}" alt="France" /></a></li>
+                    <li><a href="https://uk.kojimaproductions-store.com/ru"><img src="{{ 'russia-flag.png' | asset_url }}" alt="Russia" /></a></li>
+                    <li><a href="https://kojimaproductions-store.jp/"><img src="{{ 'ly-icon-64048.png' | asset_url }}" alt="Japan" /></a></li>
+                    <li><a href="http://kojimaproductions-store.cn/"><img src="{{ 'ly-icon-64049.png' | asset_url }}" alt="China" /></a></li>
                   </ul>
                 </div><!-- end .language-switcher -->
 
                 <a href="/cart" class="js-drawer-open-right site-nav__link" aria-controls="CartDrawer" aria-expanded="false">
-                  <img src="{{ 'cart.svg' | asset_url }}" alt="Cart" />
+                  <img src="{{ 'icon-cart-white.svg' | asset_url }}" alt="Cart" />
                 </a>
 
               </div><!-- end .d-flex -->
@@ -195,18 +199,16 @@ window.supported_currencies = "{{ settings.mlvedaACS_supportedCurrencies }}";
     <header class="mobile-header">
       <div class="container-fluid">
         <div class="row align-items-center pt-4 pb-4">
-          <div class="col-4">
-            <a href="#" class="menu-toggle"><img src="{{ 'menu-toggle.svg' | asset_url }}" alt="Mobile Menu Toggle" /></a>
-          </div><!-- end .col-4 -->
           <div class="col-4 text-center">
             <a href="/" itemprop="url">
-              <img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}" itemprop="logo" class="logo img-fluid">
+              <img src="{{ 'logo-new.png' | asset_url }}" alt="{{ shop.name }}" itemprop="logo" class="logo img-fluid">
             </a>
           </div><!-- end .col-4 -->
-          <div class="col-4 text-right">
+          <div class="col-8 text-right">
             <a href="/cart" class="js-drawer-open-right site-nav__link" aria-controls="CartDrawer" aria-expanded="false">
               <img src="{{ 'cart.svg' | asset_url }}" alt="Cart" />
             </a>
+            <a href="#" class="menu-toggle"><img src="{{ 'menu-toggle-white.png' | asset_url }}" alt="Mobile Menu Toggle" /></a>
           </div><!-- end .col-4 -->
         </div><!-- end .row -->
         
