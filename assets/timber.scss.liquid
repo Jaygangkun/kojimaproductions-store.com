@@ -4258,7 +4258,7 @@ section.contact-form {
 }
 
 #site-header {
-  background: rgba(0, 0, 0, 0.35);
+  // background: rgba(0, 0, 0, 0.55);
   position: fixed;
   left: 0px;
   top: 41.5px;
@@ -4266,11 +4266,56 @@ section.contact-form {
   z-index: 1;
   border-bottom: 0px;
 
+  .header-logo-col {
+    padding-right: 0px;
+
+    .site-header-logo-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      margin-left: -15px;
+      margin-right: 60px;
+      background: rgba(0,0,0,.35);
+
+      &::before {
+        position: absolute;
+        content: '';
+        right: -60px;
+        top: 0px;
+        width: 0px;
+        height: 100%;
+        // background: rgba(0, 0, 0, 0.35);
+        border-left: 30px solid rgba(0, 0, 0, 0.35);
+        border-bottom: 45px solid rgba(0, 0, 0, 0.35);
+        border-top: 44px solid rgba(0, 0, 0, 0.55);
+        border-right: 30px solid rgba(0, 0, 0, 0.55);
+      }
+
+      a {
+        position: relative;
+      }
+    }
+    
+    
+  }
+
+  .header-links-col {
+    background: rgba(0, 0, 0, 0.55);
+  }
+
+  .header-menu-col {
+    background: rgba(0, 0, 0, 0.55);
+    position: static;
+  }
+
   ul.mega-menu li {
     a.mega-menu-link {
       color: #ffffff;  
       position: relative;
       padding: 35px;
+      white-space: pre;
       &.has-icon::after {
         content: '';
         position: absolute;
@@ -4326,5 +4371,75 @@ section.contact-form {
   .site-nav__link {
     display: inline-block;
     display: none;
+  }
+}
+
+.slider-for  .slick-next:before, 
+.slider-for  .slick-prev:before {
+  color: #676666;
+}
+
+.slider-for .slick-prev {
+  left: 10px;
+}
+
+.slider-for .slick-next {
+  right: 10px;
+}
+
+.top-nav {
+  padding: 8px 0;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  z-index: 1;
+}
+
+body {
+  padding-top: 130.5px;
+  position: relative;
+}
+
+body::before {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  height: 130.5px;
+  width: 100%;
+  background: #000000bd;
+  content: '';
+}
+
+
+@media screen and (max-width: 992px) {
+  body {
+    padding-top: 100px;
+  }
+
+  .mobile-header {
+    height: 100px;
+
+    .logo {
+      height: 50px;
+      width: auto;
+      max-width: initial;
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  body {
+    padding-top: 80px;
+  }
+
+  .mobile-header {
+    height: 80px;
+
+    .logo {
+      height: 35px;
+      width: auto;
+      max-width: initial;
+    }
   }
 }

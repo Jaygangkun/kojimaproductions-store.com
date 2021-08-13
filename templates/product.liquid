@@ -6,6 +6,7 @@
   .banner-slider .slider.slider-for {
       max-width: 84%;
       padding-left: 35px;
+      padding-right: 35px;
   }
   .banner-slider .slider.slider-nav {
       max-width: 16%;
@@ -42,8 +43,8 @@
   .slick-vertical .slick-slide:focus,
   .slick-arrow:hover,
   .slick-arrow:focus {
-      border: 0;
-      outline: 0;
+      /* border: 0;
+      outline: 0; */
   }
   .slider-nav .slick-slide.slick-current.thumbnail-image .thumbImg {
       border: 2px solid #196DB6;
@@ -61,7 +62,7 @@
       padding: 5px 0 15px;
   }
   .slick-arrow {
-      width: 100%;
+      /* width: 100%;
       background-color: transparent;
       border: 0;
       background-position: center;
@@ -71,14 +72,14 @@
       position: absolute;
       left: 0;
       right: 0;
-      z-index: 99;
+      z-index: 99; */
   }
   .slick-prev {
-    top: 0;
+    /* top: 0; */
   }
   .slick-next {
-    bottom: 0;
-    background-color: #fff;
+    /* bottom: 0;
+    background-color: #fff; */
   }
   .slick-prev.slick-arrow {
       /* background-image: url(../images/black-up-arrow.png); */
@@ -99,7 +100,7 @@
         float: none;
     }
     .banner-slider .slider.slider-for {
-      padding-left: 0;
+      /* padding-left: 0; */
     }
     .banner-slider .slider.slider-nav {
       height: auto;
@@ -114,7 +115,7 @@
       padding: 5px 0;
     }
     .slick-arrow {
-      padding: 0;
+      /* padding: 0;
         width: 30px;
         height: 30px;
         top: 50%;
@@ -122,7 +123,7 @@
         -webkit-transform: translateY(-50%) rotate(-90deg);
         -moz-transform: translateY(-50%) rotate(-90deg);
         -ms-transform: translateY(-50%) rotate(-90deg);
-        transform: translateY(-50%) rotate(-90deg);
+        transform: translateY(-50%) rotate(-90deg); */
     }
     .slick-prev {
         left: 0;
@@ -178,10 +179,10 @@
       height: 80px;
     }
     .slick-prev.slick-arrow {
-        background-position: center 10px;
+        /* background-position: center 10px; */
     }
     .slick-next.slick-arrow {
-        background-position: center 10px, center;
+        /* background-position: center 10px, center; */
     }
     .slider-nav .slick-slide span {
         font-size: 12px;
@@ -452,6 +453,7 @@
     slidesToShow: 4,
     slidesToScroll: 1,
     vertical:true,
+    arrows: false,
     asNavFor: '.slider-for',
     dots: false,
     focusOnSelect: true,

@@ -97,6 +97,127 @@ window.supported_currencies = "{{ settings.mlvedaACS_supportedCurrencies }}";
       <div id="CartContainer"></div>
     </div>
   {% endif %}
+
+  <header class="top-nav">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12 text-right">
+          <ul>
+          {% for link in linklists.top-menu.links %}
+            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+          {% endfor %}
+          </ul>
+        </div><!-- end .col-lg-12 -->
+      </div><!-- end .row -->
+    </div><!-- end .container -->
+  </header>
+  
+  <header id="site-header">
+    <div class="container-fluid">
+      <div  class="row">
+        <div class="col-lg-3 header-logo-col">
+          <div class="site-header-logo-wrap">
+            <a href="/" itemprop="url">
+              <img src="{{ 'logo-new.png' | asset_url }}" alt="{{ shop.name }}" itemprop="logo">
+            </a>
+          </div>
+            
+        </div><!-- end .col-lg-2 -->
+        <div class="col-lg-7 header-menu-col">
+          
+          <ul class="mega-menu">
+            {% for link in linklists.mega-menu.links %}
+              {% assign link_class = link.title | downcase | replace: ' ', '-' %}
+            
+              <li>
+                  {% if link_class == 'all' %}
+                    <a href="{{ link.url }}" class="mega-menu-link category-{{ link_class }} has-icon">{{ link.title }}</a>
+                    {% include 'mega-menu-all' %}
+                  {% elsif link_class == 'kojima-productions' %}
+                    <a href="{{ link.url }}" class="mega-menu-link category-{{ link_class }} has-icon">{{ link.title }}</a>
+                    {% include 'mega-menu-kojima' %}
+                  {% elsif link_class == 'death-stranding' %}
+                    <a href="{{ link.url }}" class="mega-menu-link category-{{ link_class }} has-icon">{{ link.title }}</a>
+                    {% include 'mega-menu-death-stranding' %}
+                  {% else %}
+                    <a href="{{ link.url }}" class="mega-menu-link category-{{ link_class }}">{{ link.title }}</a>
+                  {% endif %}
+                </li>
+          {% endfor %}
+          </ul>
+          
+        </div><!-- end .col-lg-8 -->
+         <div class="col-lg-2 text-right header-links-col">
+            
+            <div class="d-flex h-100 align-items-center justify-content-end">
+              
+              <a href="#" class="search-icon"><i class="fa fa-search" aria-hidden="true"></i></a>
+                
+              <div class="language-switcher">
+                <div class="language-selected"><img src="{{ 'ly-icon-63593.png' | asset_url }}" alt="USA" /> <img class="dropdown" src="{{ 'icon-arrow-down.png' | asset_url }}"></div>
+
+                <ul class="countries">
+                  <li><a href="https://kojimaproductions-store.com/"><img src="{{ 'ly-icon-63593.png' | asset_url }}" alt="USA" /></a></li>
+                  <li><a href="https://uk.kojimaproductions-store.com/"><img src="{{ 'ly-icon-64044.png' | asset_url }}" alt="UK" /></a></li>
+                  <li><a href="https://uk.kojimaproductions-store.com/fr"><img src="{{ 'ly-icon-64045.png' | asset_url }}" alt="France" /></a></li>
+                  <li><a href="https://uk.kojimaproductions-store.com/ru"><img src="{{ 'russia-flag.png' | asset_url }}" alt="Russia" /></a></li>
+                  <li><a href="https://kojimaproductions-store.jp/"><img src="{{ 'ly-icon-64048.png' | asset_url }}" alt="Japan" /></a></li>
+                  <li><a href="http://kojimaproductions-store.cn/"><img src="{{ 'ly-icon-64049.png' | asset_url }}" alt="China" /></a></li>
+                </ul>
+              </div><!-- end .language-switcher -->
+
+              <a href="/cart" class="js-drawer-open-right site-nav__link" aria-controls="CartDrawer" aria-expanded="false">
+                <img src="{{ 'icon-cart-white.svg' | asset_url }}" alt="Cart" />
+              </a>
+
+            </div><!-- end .d-flex -->
+            
+          </div><!-- end .col-lg-2 -->
+      </div><!-- end .row -->
+    </div><!-- end .container-fluid -->
+    
+  </header>
+  
+  <header class="mobile-header">
+    <div class="container-fluid">
+      <div class="row align-items-center pt-4 pb-4">
+        <div class="col-4 text-center">
+          <a href="/" itemprop="url">
+            <img src="{{ 'logo-new.png' | asset_url }}" alt="{{ shop.name }}" itemprop="logo" class="logo img-fluid">
+          </a>
+        </div><!-- end .col-4 -->
+        <div class="col-8 text-right">
+          <a href="/cart" class="js-drawer-open-right site-nav__link" aria-controls="CartDrawer" aria-expanded="false">
+            <img src="{{ 'cart.svg' | asset_url }}" alt="Cart" />
+          </a>
+          <a href="#" class="menu-toggle"><img src="{{ 'menu-toggle-white.png' | asset_url }}" alt="Mobile Menu Toggle" /></a>
+        </div><!-- end .col-4 -->
+      </div><!-- end .row -->
+      
+      <div class="mobile-nav">
+        <ul class="mega-menu">
+          {% for link in linklists.mega-menu.links %}
+              {% assign link_class = link.title | downcase | replace: ' ', '-' %}
+
+              <li>
+                <a href="{{ link.url }}" class="category-{{ link_class }}">{{ link.title }}</a>
+                {% if link_class == 'all' %}
+                  <div class="toggle-sub-menu">+</div>
+                  {% include 'mega-menu-all' %}
+                {% elsif link_class == 'kojima-productions' %}
+                  <div class="toggle-sub-menu">+</div>
+                  {% include 'mega-menu-kojima' %}
+                {% elsif link_class == 'death-stranding' %}
+                  <div class="toggle-sub-menu">+</div>
+                  {% include 'mega-menu-death-stranding' %}
+                {% endif %}
+              </li>
+          {% endfor %}
+        </ul>
+      </div><!-- end .mobile-nav -->
+      
+    </div><!-- end .container-fluid -->
+  </header>
   
   <div id="PageContainer" class="is-moved-by-drawer">
     
@@ -118,125 +239,6 @@ window.supported_currencies = "{{ settings.mlvedaACS_supportedCurrencies }}";
         </div><!-- end .container -->
       </div><!-- end .announcement -->
     {% endif %}
-    
-    <header class="top-nav">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-lg-12 text-right">
-            <ul>
-            {% for link in linklists.top-menu.links %}
-              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-            {% endfor %}
-            </ul>
-          </div><!-- end .col-lg-12 -->
-        </div><!-- end .row -->
-      </div><!-- end .container -->
-    </header>
-    
-    <header id="site-header">
-      <div class="container-fluid">
-      	<div  class="row">
-        	<div class="col-lg-2 d-flex align-items-center">
-              <a href="/" itemprop="url">
-                <img src="{{ 'logo-new.png' | asset_url }}" alt="{{ shop.name }}" itemprop="logo">
-              </a>
-          	</div><!-- end .col-lg-2 -->
-          	<div class="col-lg-8">
-              
-              <ul class="mega-menu">
-                {% for link in linklists.mega-menu.links %}
-                	{% assign link_class = link.title | downcase | replace: ' ', '-' %}
-                
-              		<li>
-                      {% if link_class == 'all' %}
-                        <a href="{{ link.url }}" class="mega-menu-link category-{{ link_class }} has-icon">{{ link.title }}</a>
-                      	{% include 'mega-menu-all' %}
-                      {% elsif link_class == 'kojima-productions' %}
-                        <a href="{{ link.url }}" class="mega-menu-link category-{{ link_class }} has-icon">{{ link.title }}</a>
-                      	{% include 'mega-menu-kojima' %}
-                      {% elsif link_class == 'death-stranding' %}
-                        <a href="{{ link.url }}" class="mega-menu-link category-{{ link_class }} has-icon">{{ link.title }}</a>
-                      	{% include 'mega-menu-death-stranding' %}
-                      {% else %}
-                        <a href="{{ link.url }}" class="mega-menu-link category-{{ link_class }}">{{ link.title }}</a>
-                      {% endif %}
-               		</li>
-            	{% endfor %}
-              </ul>
-              
-          	</div><!-- end .col-lg-8 -->
-         	<div class="col-lg-2 text-right">
-              
-              <div class="d-flex h-100 align-items-center justify-content-end">
-                
-                <a href="#" class="search-icon"><i class="fa fa-search" aria-hidden="true"></i></a>
-                  
-                <div class="language-switcher">
-                  <div class="language-selected"><img src="{{ 'ly-icon-63593.png' | asset_url }}" alt="USA" /> <img class="dropdown" src="{{ 'icon-arrow-down.png' | asset_url }}"></div>
-
-                  <ul class="countries">
-                    <li><a href="https://kojimaproductions-store.com/"><img src="{{ 'ly-icon-63593.png' | asset_url }}" alt="USA" /></a></li>
-                    <li><a href="https://uk.kojimaproductions-store.com/"><img src="{{ 'ly-icon-64044.png' | asset_url }}" alt="UK" /></a></li>
-                    <li><a href="https://uk.kojimaproductions-store.com/fr"><img src="{{ 'ly-icon-64045.png' | asset_url }}" alt="France" /></a></li>
-                    <li><a href="https://uk.kojimaproductions-store.com/ru"><img src="{{ 'russia-flag.png' | asset_url }}" alt="Russia" /></a></li>
-                    <li><a href="https://kojimaproductions-store.jp/"><img src="{{ 'ly-icon-64048.png' | asset_url }}" alt="Japan" /></a></li>
-                    <li><a href="http://kojimaproductions-store.cn/"><img src="{{ 'ly-icon-64049.png' | asset_url }}" alt="China" /></a></li>
-                  </ul>
-                </div><!-- end .language-switcher -->
-
-                <a href="/cart" class="js-drawer-open-right site-nav__link" aria-controls="CartDrawer" aria-expanded="false">
-                  <img src="{{ 'icon-cart-white.svg' | asset_url }}" alt="Cart" />
-                </a>
-
-              </div><!-- end .d-flex -->
-              
-          	</div><!-- end .col-lg-2 -->
-        </div><!-- end .row -->
-      </div><!-- end .container-fluid -->
-      
-    </header>
-    
-    <header class="mobile-header">
-      <div class="container-fluid">
-        <div class="row align-items-center pt-4 pb-4">
-          <div class="col-4 text-center">
-            <a href="/" itemprop="url">
-              <img src="{{ 'logo-new.png' | asset_url }}" alt="{{ shop.name }}" itemprop="logo" class="logo img-fluid">
-            </a>
-          </div><!-- end .col-4 -->
-          <div class="col-8 text-right">
-            <a href="/cart" class="js-drawer-open-right site-nav__link" aria-controls="CartDrawer" aria-expanded="false">
-              <img src="{{ 'cart.svg' | asset_url }}" alt="Cart" />
-            </a>
-            <a href="#" class="menu-toggle"><img src="{{ 'menu-toggle-white.png' | asset_url }}" alt="Mobile Menu Toggle" /></a>
-          </div><!-- end .col-4 -->
-        </div><!-- end .row -->
-        
-        <div class="mobile-nav">
-          <ul class="mega-menu">
-            {% for link in linklists.mega-menu.links %}
-                {% assign link_class = link.title | downcase | replace: ' ', '-' %}
-
-                <li>
-                  <a href="{{ link.url }}" class="category-{{ link_class }}">{{ link.title }}</a>
-                  {% if link_class == 'all' %}
-                  	<div class="toggle-sub-menu">+</div>
-                    {% include 'mega-menu-all' %}
-                  {% elsif link_class == 'kojima-productions' %}
-                  	<div class="toggle-sub-menu">+</div>
-                    {% include 'mega-menu-kojima' %}
-                  {% elsif link_class == 'death-stranding' %}
-                  	<div class="toggle-sub-menu">+</div>
-                    {% include 'mega-menu-death-stranding' %}
-                  {% endif %}
-                </li>
-            {% endfor %}
-          </ul>
-        </div><!-- end .mobile-nav -->
-        
-      </div><!-- end .container-fluid -->
-    </header>
-
 
    	{{ content_for_layout }}
 
