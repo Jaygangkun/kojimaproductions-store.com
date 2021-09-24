@@ -308,6 +308,9 @@ window.supported_currencies = "{{ settings.mlvedaACS_supportedCurrencies }}";
                 {% if settings.social_twitter_link != blank %}
                   <li><a href="{{ settings.social_twitter_link }}"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
                 {% endif %}
+                {% if settings.social_instagram_link != blank %}
+                  <li><a href="{{ settings.social_instagram_link }}"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                {% endif %}
               </ul>
             {% endif %}
           </div><!-- end .col-lg-4 -->
@@ -319,25 +322,7 @@ window.supported_currencies = "{{ settings.mlvedaACS_supportedCurrencies }}";
       <div class="container">
         <div class="row">
           <div class="col-lg-6 text-center mx-auto">
-            <div class="footer-title">ACCEPTED PAYMENTS</div>
-            {% unless shop.enabled_payment_types == empty %}
-              {% assign payment_icons_available = 'amazon_payments,american_express,bitcoin,cirrus,dankort,diners_club,discover,dogecoin,dwolla,forbrugsforeningen,interac,jcb,litecoin,maestro,master,paypal,visa' | split: ',' %}
-              <ul class="inline-list payment-icons">
-                {% for type in shop.enabled_payment_types %}
-                  {% if payment_icons_available contains type %}
-                    <li>
-                      <span class="icon-fallback-text">
-                        <span class="icon icon-{{type}}" aria-hidden="true"></span>
-                        <span class="fallback-text">{{ type | replace: '_',' '}}</span>
-                      </span>
-                    </li>
-                  {% endif %}
-                {% endfor %}
-              </ul>
-            {% endunless %}
-            
             <div class="copyright">Copyright © KOJIMA PRODUCTIONS Co.,Ltd. All Rights Reserved.</div>
-            
           </div><!-- end .col-lg-6 -->
         </div><!-- end .row -->
       </div><!-- end .container -->
@@ -418,7 +403,7 @@ window.supported_currencies = "{{ settings.mlvedaACS_supportedCurrencies }}";
   	  });
         
       $('.slider-section .slider-wrapper').slick({
-		slidesToShow: 4,
+		slidesToShow: 3,
         slidestoScroll: 1,
         prevArrow: '<button type="button" class="slick-prev"><i class="fa fa-angle-left" aria-hidden="true"></i></button>',
         nextArrow: '<button type="button" class="slick-next"><i class="fa fa-angle-right" aria-hidden="true"></i></button>',
@@ -426,7 +411,7 @@ window.supported_currencies = "{{ settings.mlvedaACS_supportedCurrencies }}";
           {
             breakpoint: 992,
             settings: {
-              slidesToShow: 3
+              slidesToShow: 2
             }
           },
           {

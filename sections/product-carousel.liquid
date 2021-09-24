@@ -1,8 +1,8 @@
-<section class="slider-section" {{ block.shopify_attributes }}>
+<section class="slider-section {{ section.settings.slider_class }}" {{ block.shopify_attributes }}>
   <div class="container">
     <div class="row">
       <div class="col-lg-6 mx-auto text-center">
-        <h2>{{ section.settings.section_title }}</h2>
+        <h2 class="slant-title">{{ section.settings.section_title }}</h2>
       </div><!-- end .col-lg-6 -->
     </div><!-- end .row -->
     
@@ -40,6 +40,22 @@
   {
     "name": "Product Slider",
 	"settings": [
+        {
+          "type": "select",
+          "id": "slider_class",
+          "label": "Slider Background",
+          "options": [
+            {
+              "value": "white",
+              "label": "White"
+            },
+            {
+              "value": "black",
+              "label": "Black"
+            }
+          ],
+          "default": "white"
+        },
 		{
 			"id": "section_title",
 			"type": "text",
