@@ -227,7 +227,7 @@
                 <div class="banner-slider">
                   <div class="slider slider-nav thumb-image">
                     {% for image in product.images %}
-                      <div class="thumbnail-image">
+                      <div class="thumbnail-image" image-id="{{ image.id }}" data-fancybox="gallery" href="{{ image.src | img_url: 'large' }}">
                         <div class="thumbImg">
                           <img src="{{ image.src | img_url: 'large' }}" alt="{{ image.alt | escape }}">
                         </div>
@@ -236,7 +236,7 @@
                   </div>
                   <div class="slider slider-for">
                     {% for image in product.images %}
-                      <div class="slider-banner-image">
+                      <div class="slider-banner-image" image-id="{{ image.id }}" data-fancybox="gallery" href="{{ image.src | img_url: 'large' }}">
                         <img src="{{ image.src | img_url: 'large' }}" alt="{{ image.alt | escape }}">
                       </div>
                     {% endfor %}
@@ -442,7 +442,25 @@
           socialWindow(url);
       })
   }
-  
+
+  jQuery('.slider-nav [data-fancybox="gallery"]').fancybox({
+	  loop: true
+  });
+
+  jQuery('.slider-for [data-fancybox="gallery"]').fancybox({
+	  loop: true,
+    onNext: function(){
+      console.log('next function')
+    }
+  });
+
+  var product_image_slider_index = {};
+  var index = 0;
+  {% for image in product.images %}
+    product_image_slider_index['{{ image.id }}'] = index;
+    index++;
+  {% endfor %}
+
   jQuery('.slider-for').slick({
     slidesToShow: 1,
     slidesToScroll: 1,

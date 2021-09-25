@@ -220,6 +220,14 @@ timber.productPage = function (options) {
       var newImg = variant.featured_image,
           el = $productImage[0];
       Shopify.Image.switchImage(newImg, el, timber.switchImage);
+
+      // change image of slider
+      let image_id = variant.featured_image.id;
+      let slider_for_index = product_image_slider_index[image_id];
+      jQuery('.slider-for').slick('slickGoTo', slider_for_index);
+
+      let slider_nav_index = product_image_slider_index[image_id];
+      jQuery('.slider-nav').slick('slickGoTo', slider_nav_index);
     }
 
     // Select a valid variant if available
